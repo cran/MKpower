@@ -3,10 +3,21 @@
 ###############################################################################
 
 ###########################################################
+## Version 0.6
+###########################################################
+- update due to change in package matrixTests
+- changed package link to https://github.com/stamats/MKpower
+- changed http to https
+- added argument conf.int to sim.power.t.test to reduce computation time
+- changed ..density.. to after_stat(density) in geom_hist
+
+
+###########################################################
 ## Version 0.5
 ###########################################################
 - added new methods to function ssize.propCI contributed by Måns Thulin.
-- udate of link to Sample Size Planning for Developing Classifiers Using High Dimensional Data
+- update of link to Sample Size Planning for Developing Classifiers Using 
+  High Dimensional Data
 
 
 ###########################################################
