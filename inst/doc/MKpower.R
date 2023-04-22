@@ -33,6 +33,39 @@ power.welch.t.test(delta = 0.5, sd1 = 0.5, sd2 = 1, power = 0.9)
 power.hsu.t.test(delta = 0.5, sd1 = 0.5, sd2 = 1, power = 0.9)
 
 ## -----------------------------------------------------------------------------
+## 3 groups
+cbind(rep(1,2), -diag(2))
+## 4 groups
+cbind(rep(1,3), -diag(3))
+
+## -----------------------------------------------------------------------------
+## Example from Maxwell and Delaney (2004) according to Shieh (2020)
+power.ancova(mu=c(7.5366, 11.9849, 13.9785), var = 29.0898, power = 0.8)
+power.ancova(n = rep(45/3, 3), mu=c(7.5366, 11.9849, 13.9785), var = 29.0898)
+power.ancova(mu=c(7.5366, 11.9849, 13.9785), var = 29.0898, power = 0.9)
+power.ancova(n = rep(57/3, 3), mu=c(7.5366, 11.9849, 13.9785), var = 29.0898)
+
+## -----------------------------------------------------------------------------
+power.ancova(mu=c(7.5366, 11.9849, 13.9785), var = 29.0898, power = 0.8,
+             nr.covs = 2)
+power.ancova(mu=c(7.5366, 11.9849, 13.9785), var = 29.0898, power = 0.8,
+             nr.covs = 3)
+power.ancova(mu=c(7.5366, 11.9849, 13.9785), var = 29.0898, power = 0.8,
+             nr.covs = 5)
+power.ancova(mu=c(7.5366, 11.9849, 13.9785), var = 29.0898, power = 0.8,
+             nr.covs = 10)
+
+## -----------------------------------------------------------------------------
+power.ancova(mu=c(7.5366, 11.9849, 13.9785), var = 29.0898, power = 0.8, 
+             group.ratio = c(1, 1.25, 1.5))
+power.ancova(n = c(13, 16, 19), mu=c(7.5366, 11.9849, 13.9785), var = 29.0898,  
+             group.ratio = c(1, 1.25, 1.5))
+power.ancova(mu=c(7.5366, 11.9849, 13.9785), var = 29.0898, power = 0.8, 
+             group.ratio = c(1, 0.8, 2/3))
+power.ancova(n = c(17, 14, 12), mu=c(7.5366, 11.9849, 13.9785), var = 29.0898,  
+             group.ratio = c(1, 0.8, 2/3))
+
+## -----------------------------------------------------------------------------
 rx <- function(n) rnorm(n, mean = 0, sd = 1) 
 ry <- function(n) rnorm(n, mean = 0.5, sd = 1) 
 ## two-sample
