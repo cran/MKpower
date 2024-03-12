@@ -107,6 +107,21 @@ fc <- 1.6
 ssize.pcc(gamma = g, stdFC = fc, nrFeatures = 22000)
 
 ## -----------------------------------------------------------------------------
+ssize.reference.range(delta = 0.01, ref.prob = 0.95, conf.prob = 0.9, 
+                      method = "parametric", exact = TRUE)
+ssize.reference.range(delta = 0.01, ref.prob = 0.95, conf.prob = 0.9, 
+                      method = "parametric", exact = FALSE)
+ssize.reference.range(delta = 0.01, ref.prob = 0.95, conf.prob = 0.9, 
+                      method = "nonparametric", exact = TRUE)
+ssize.reference.range(delta = 0.01, ref.prob = 0.95, conf.prob = 0.9, 
+                      method = "nonparametric", exact = FALSE)
+
+## -----------------------------------------------------------------------------
+ssize.reference.range(delta = 0.015, ref.prob = 0.95, conf.prob = 0.9, 
+                      method = "parametric", exact = TRUE, 
+                      alternative = "one.sided")
+
+## -----------------------------------------------------------------------------
 ## functions to simulate the data
 ## group 1
 rx <- function(n) rnorm(n, mean = 0, sd = 1)
@@ -125,7 +140,7 @@ res.w <- sim.power.wilcox.test(nx = 10, rx = rx, rx.H0 = rx.H0,
                                ny = 10, ry = ry, ry.H0 = ry.H0)
 res.w
 
-## ---- fig.width=7, fig.height=7-----------------------------------------------
+## ----fig.width=7, fig.height=7------------------------------------------------
 ## t-tests
 hist(res.t)
 qqunif(res.t, alpha = 0.05)

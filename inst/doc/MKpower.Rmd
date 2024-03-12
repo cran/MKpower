@@ -20,8 +20,8 @@ of empirical power and type-I-error. In addition, power and sample size calculat
 for Wilcoxon rank sum and signed rank tests via Monte-Carlo simulations can 
 be performed. Moreover, power and sample size required for the evaluation of a 
 diagnostic test(-system) [@Flahault2005; @Dobbin2007] as well as for a single 
-proportion [@Fleiss2003], comparing two negative binomial rates [@Zhu2014],
-and ANCOVA [@Shieh2020] can be calculated.
+proportion [@Fleiss2003], comparing two negative binomial rates [@Zhu2014], 
+ANCOVA [@Shieh2020], and reference ranges [@Jennen2005].
 
 We first load the package.
 ```{r}
@@ -190,6 +190,30 @@ probability of correct classification (PCC) [@Dobbin2007].
 g <- 0.1
 fc <- 1.6
 ssize.pcc(gamma = g, stdFC = fc, nrFeatures = 22000)
+```
+
+
+## Reference Range
+We can apply function ssize.reference.range to determine the sample size required
+for a study planned to establish a reference range. The parametric approach 
+assumes a normal distribution whereas the non-parametric approach only assumes
+a continuous distribution.
+```{r}
+ssize.reference.range(delta = 0.01, ref.prob = 0.95, conf.prob = 0.9, 
+                      method = "parametric", exact = TRUE)
+ssize.reference.range(delta = 0.01, ref.prob = 0.95, conf.prob = 0.9, 
+                      method = "parametric", exact = FALSE)
+ssize.reference.range(delta = 0.01, ref.prob = 0.95, conf.prob = 0.9, 
+                      method = "nonparametric", exact = TRUE)
+ssize.reference.range(delta = 0.01, ref.prob = 0.95, conf.prob = 0.9, 
+                      method = "nonparametric", exact = FALSE)
+```
+
+We can also calculate the sample size for one-sided reference ranges.
+```{r}
+ssize.reference.range(delta = 0.015, ref.prob = 0.95, conf.prob = 0.9, 
+                      method = "parametric", exact = TRUE, 
+                      alternative = "one.sided")
 ```
 
 
