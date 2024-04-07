@@ -122,6 +122,36 @@ ssize.reference.range(delta = 0.015, ref.prob = 0.95, conf.prob = 0.9,
                       alternative = "one.sided")
 
 ## -----------------------------------------------------------------------------
+Sigma <- matrix(c(1, 0.8, 0.8, 1), nrow = 2)
+power.mpe.known.var(K = 2, delta = c(0.25, 0.4), Sigma = Sigma, 
+                    sig.level = 0.025, power = 0.8)
+## equivalent: specify SDs and correlation rho
+power.mpe.known.var(K = 2, delta = c(0.25, 0.4), SD = c(1,1), rho = 0.8, 
+                    sig.level = 0.025, power = 0.8)
+
+## -----------------------------------------------------------------------------
+## Step 1:
+power.mpe.known.var(K = 2, delta = c(0.5, 0.4), Sigma = Sigma, 
+                    sig.level = 0.025, power = 0.8)
+## Step 2 + 3:
+Sigma <- matrix(c(1, 0.5, 0.5, 1), nrow = 2)
+power.mpe.unknown.var(K = 2, delta = c(0.5, 0.4), Sigma = Sigma, 
+                      sig.level = 0.025, power = 0.8, 
+                      n.min = 105, n.max = 120)
+## equivalent: specify SDs and correlation rho
+power.mpe.unknown.var(K = 2, delta = c(0.5, 0.4), SD = c(1,1), rho = 0.5, 
+                      sig.level = 0.025, power = 0.8, 
+                      n.min = 105, n.max = 120)
+
+## -----------------------------------------------------------------------------
+Sigma <- matrix(c(1, 0.3, 0.3, 1), nrow = 2)
+power.mpe.atleast.one(K = 2, delta = c(0.2, 0.3), Sigma = Sigma,
+                      power = 0.8, sig.level = 0.025)
+## equivalent: specify SDs and correlation rho
+power.mpe.atleast.one(K = 2, delta = c(0.2, 0.3), SD = c(1,1), rho = 0.3,  
+                      power = 0.8, sig.level = 0.025)
+
+## -----------------------------------------------------------------------------
 ## functions to simulate the data
 ## group 1
 rx <- function(n) rnorm(n, mean = 0, sd = 1)
