@@ -9,9 +9,9 @@ power.prop1.test(p1 = 0.4, power = 0.8, cont.corr = FALSE)
 
 ## -----------------------------------------------------------------------------
 ## with continuity correction
-ssize.propCI(prop = 0.4, width = 0.14)
+ssize.prop.ci(prop = 0.4, width = 0.14)
 ## without continuity correction
-ssize.propCI(prop = 0.4, width = 0.14, method = "wald")
+ssize.prop.ci(prop = 0.4, width = 0.14, method = "wald")
 
 ## -----------------------------------------------------------------------------
 ## identical results as power.t.test, since sd = sd1 = sd2 = 1
@@ -96,9 +96,12 @@ power.nb.test(mu0 = 5.0, RR = 2.0, theta = 1/0.5, duration = 1, power = 0.8, app
 
 ## -----------------------------------------------------------------------------
 ## see n2 on page 1202 of Chu and Cole (2007)
-power.diagnostic.test(sens = 0.99, delta = 0.14, power = 0.95) # 40
-power.diagnostic.test(sens = 0.99, delta = 0.13, power = 0.95) # 43
-power.diagnostic.test(sens = 0.99, delta = 0.12, power = 0.95) # 47
+ssize.sens.ci(sens = 0.99, delta = 0.14, power = 0.95) # 40
+ssize.sens.ci(sens = 0.99, delta = 0.13, power = 0.95) # 43
+ssize.spec.ci(spec = 0.99, delta = 0.12, power = 0.95) # 47
+
+## -----------------------------------------------------------------------------
+ssize.auc.ci(AUC = 0.9, delta = 0.1, power = 0.95)
 
 ## -----------------------------------------------------------------------------
 ## see Table 2 of Dobbin et al. (2008)
